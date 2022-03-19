@@ -1,0 +1,24 @@
+{
+    "name": "node_server",
+    "version": "1.0.0",
+    "description": "Node.js Server Practice",
+    "main": "app.js",
+    "scripts": {
+      "test": "node app.js",
+      "start": "node app_fs.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/runtodream/js.git"
+    },
+    "keywords": [
+      "nodejs",
+      "test"
+    ],
+    "author": "Matthew&Geonwoo",
+    "bugs": {
+      "url": "https://github.com/runtodream/js.git/issues"
+    },
+    "homepage": "https://github.com/runtodream/js.git#readme"
+  }
+  
