@@ -9,7 +9,7 @@ const port = '3001';
 // req: request. 웹 요청 매개변수, res: response. 웹 응답 매개변수
 http.createServer(function (req, res) {
     
-    fs.readFile('./agecheck.html', 'utf8', function(err, data) {
+    fs.readFile('./html/age_check.html', 'utf8', function(err, data) {
         // the data is passed to the callback in the second argument
         //console.log(data);
         // writeHead: 응답 헤더를 작성합니다.
