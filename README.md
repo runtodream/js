@@ -1,0 +1,2 @@
+# js
+study for javascript
