@@ -45,26 +45,38 @@
         break;
   }
 
-  if(gameNum == com) {
+  function resultSame() {
     document.write("<h1> >>> 비겼습니다.<h1>");
+  }
+
+  function resultWin() {
+    document.write("<h1> >>> 당신이 이겼습니다. ^^<h1>");
+  }
+
+  function resultLose() {
+    document.write("<h1> >>> 당신이 졌습니다. ㅜ.ㅡ<h1>");
+  }
+
+  if(gameNum == com) {
+    resultSame();
   } else {
     if(gameNum == 1) {
         if(com == 2) {
-            document.write("<h1> >>> 당신이 졌습니다. ㅜ.ㅡ<h1>");
+            resultLose();
         } else {
-            document.write("<h1> >>> 당신이 이겼습니다. ^^<h1>");
+            resultWin();
         }
     } else if(gameNum == 2) {
         if(com == 3) {
-            document.write("<h1> >>> 당신이 졌습니다. ㅜ.ㅡ<h1>");
+            resultLose();
         } else {
-            document.write("<h1> >>> 당신이 이겼습니다. ^^<h1>");
+            resultWin();
         }
     } else {
         if(com == 1) {
-            document.write("<h1> >>> 당신이 졌습니다. ㅜ.ㅡ<h1>");
+            resultLose();
         } else {
-            document.write("<h1> >>> 당신이 이겼습니다. ^^<h1>");
+            resultWin();
         }
     }
   }
