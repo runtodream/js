@@ -61,6 +61,8 @@
     var updated_money = curr_money + fish_money;
     localStorage.setItem(account + "_money", updated_money);
 
+    document.write("<img src=\"/image_" + fish_type + "\" width=\"300px\" >"); 
+
     var ret = prompt_str + account + "님은 " + fish_size + "cm 크기의 " + fish_name + "을(를) 낚았습니다. (+ " + fish_money + "원, 현재 재산: " + updated_money + "원)<br>";
     return ret;
   }
