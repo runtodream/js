@@ -9,40 +9,64 @@
 
 <body>
 <script>
-  document.write("<h1> 컴퓨터 가위, 바위, 보 맞추기 게임<h1>");
+  document.write("<h1> 컴퓨터 가위, 바위, 보 게임<h1>");
   
   var game = prompt("가위, 바위, 보 중 선택하세요.", "가위");
   var gameNum;
 
+  document.write("<h3>입력값:<br>");
   switch(game) {
-      case "가위": 
+      case "가위":  
+        document.write("<img src=\"/image_1\">");
         gameNum = 1; break;
       case "바위": 
+        document.write("<img src=\"/image_2\">");    
         gameNum = 2; break;
       case "보": 
+        document.write("<img src=\"/image_3\">");
         gameNum = 3; break;
       default: 
         alert("잘못 작성했습니다.");
         location.reload();
   }
 
+  document.write("<br><br><h3>컴퓨터는??<br>");
+
   var com = Math.ceil(Math.random()*3);
   switch(com) {
       case 1: 
-        document.write("<h1>가위<h1>");
+        document.write("<img src=\"/image_1\">");
         break;
-      case 2: 
-        document.write("<h1>바위<h1>");
+      case 2:         
+        document.write("<img src=\"/image_2\">");        
         break;
-      case 3: 
-        document.write("<h1>보<h1>");
+      case 3:         
+        document.write("<img src=\"/image_3\">");        
         break;
   }
 
   if(gameNum == com) {
-      document.write("<h4>잘 맞췄습니다.<br>축하합니다. ^^<h4>");
+    document.write("<h1> >>> 비겼습니다.<h1>");
   } else {
-      document.write("<h4>틀렸습니다. 다음 기회에...<h4>");
+    if(gameNum == 1) {
+        if(com == 2) {
+            document.write("<h1> >>> 당신이 졌습니다. ㅜ.ㅡ<h1>");
+        } else {
+            document.write("<h1> >>> 당신이 이겼습니다. ^^<h1>");
+        }
+    } else if(gameNum == 2) {
+        if(com == 3) {
+            document.write("<h1> >>> 당신이 졌습니다. ㅜ.ㅡ<h1>");
+        } else {
+            document.write("<h1> >>> 당신이 이겼습니다. ^^<h1>");
+        }
+    } else {
+        if(com == 1) {
+            document.write("<h1> >>> 당신이 졌습니다. ㅜ.ㅡ<h1>");
+        } else {
+            document.write("<h1> >>> 당신이 이겼습니다. ^^<h1>");
+        }
+    }
   }
 </script>
 </body>

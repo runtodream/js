@@ -9,16 +9,18 @@ var app = http.createServer(function(request, response) {
 
     if(request.url ==='/') {
         response.writeHead(200);
-        response.end(fs.readFileSync(__dirname + '/html/image_test.html'));
+        console.log(__dirname + '/html/winpopup.html');
+        response.end(fs.readFileSync(__dirname + '/html/winpopup.html'));
     } 
     if(request.url==='/images'){
+        console.log(__dirname + '/images/rock_img_1.png loading...');
         fs.readFile(__dirname + '/images/rock_img_1.png', function(err, data){
-          console.log('image loading...');
-          response.writeHead(200);
-          response.write(data);
-          response.end();
-        });
+        response.writeHead(200);
+        response.write(data);
+        response.end();
+      });
     }
+    
 }).listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
