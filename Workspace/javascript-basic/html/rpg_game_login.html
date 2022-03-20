@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang=""en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RPG game</title>
+</head>
+
+<body>
+<button onClick="window.location.reload()">새로운 퀘스트 수행하기</button>
+<br>
+<br>
+<script>
+  var prompt_str = "> ";
+
+  function setItem(account, item, value) {
+    var key = account + "_" + item;
+    var value = localStorage.setItem(key, value);
+  }
+
+  function getItem(account, item) {
+    var key = account + "_" + item;
+    var value = localStorage.getItem(key);
+    return value;
+  }
+
+  function register(account) {
+    document.write(prompt_str + "'" + account + "'' 계정 정보 등록중...<br>");
+
+    var rpg = account + "_rpg"; localStorage.setItem(rpg, "등록완료");
+    var money = account + "_money"; localStorage.setItem(money, 0);
+
+    document.write(prompt_str + "'" + account + "'' 계정 정보 등록 완료<br>");
+
+  }
+  function registered(account) {
+    var key = account + "_rpg";
+    var result = localStorage.getItem(key);
+    if(result) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  var fishes = ["연어", "상어", "복어", "고등어", "참치", "무장강도가 버린 탄창", "열대어", "랍스터", "전복", "새우", "오징어", "굴", "고래", "ICBM", "성게"];  //물고기 종류
+  var fish_s = [5, 10, 7, 4, 8, 1, 3,11,5,4,4,4,5,12,1,4]; //물고기당 가격 결정
+
+  function goFishing(account) {
+    document.write(prompt_str + "낚시중... <br><br>");
+    var fish_type = Math.ceil(Math.random()*15);
+    var fish_price = fish_s[fish_type - 1];
+    var fish_size = 10 + Math.ceil(Math.random()*60);
+    var fish_name = fishes[fish_type - 1];
+    var fish_money = Math.ceil(fish_price * fish_size / 5);
+
+    var account_info = localStorage.getItem(account);
+
+    var curr_money = parseInt(getItem(account, 'money'));
+    var updated_money = curr_money + fish_money;
+    localStorage.setItem(account + "_money", updated_money);
+
+    var ret = prompt_str + account + "님은 " + fish_size + "cm 크기의 " + fish_name + "을(를) 낚았습니다. (+ " + fish_money + "원, 현재 재산: " + updated_money + "원)<br>";
+    return ret;
+  }
+
+  var account = prompt("ID를 입력하세요", "건우");
+ 
+  
+  var account_info = registered(account);
+  if(account_info) {
+    var str = account + '로 로그인되었습니다.<br>';
+    document.write(str);
+  } else {
+    var str = account + ' 계정은 등록되지 않은 계정입니다. 새로 등록하시겠습니까?';
+    var confirmed = confirm(str);
+    
+    if(confirmed)
+    {
+      register(account);
+      document.write(prompt_str + "'" + account + "' 계정으로 등록하였습니다.<br>");
+    }
+    else
+    {
+      document.write(prompt_str + "'" + account + "' 계정으로 등록하지 않습니다.<br>");
+    }
+  }  
+
+
+  // 메세지 입력 받기
+  //...
+  //var job = prompt("수행할 작업을 입력하세요.", "낚시");
+  var in_progress = true;
+  var result;
+  while(in_progress) {
+    var job = prompt("수행할 작업을 입력하세요.", "낚시");
+    switch(job) {
+    case '낚시': 
+      result = goFishing(account);
+      in_progress=false;
+      break;
+    default:
+      break;
+  }
+  document.write('<br>' + result);
+
+  }
+
+
+
+
+
+</script>
+
+</body>
+</html>
